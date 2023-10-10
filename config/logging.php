@@ -19,6 +19,9 @@ return [
 
     'default' => env('LOG_CHANNEL', 'stack'),
 
+    'default' => env('LOG_CHANNEL', 'database'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Deprecations Log Channel
@@ -53,6 +56,13 @@ return [
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
+
+        'database' => [
+            'driver' => 'custom', // Use the custom driver
+            'via' => App\Logging\DatabaseLogger::class, // Specify the custom logger class
+            'table' => 'logs', // Name of the database table
+        ],
+
 
         'single' => [
             'driver' => 'single',
